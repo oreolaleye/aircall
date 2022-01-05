@@ -1,0 +1,20 @@
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e1e1e1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 60px;
+}
+.dial_div {
+  position: relative;
+  bottom: 10px;
+  background-color: #2ac420;
+  border-radius: 50%;
+  text-align: center;
+  height: 70px;
+  width: 70px;
+}
+.dial_div img {
+  padding-top: 14px;
+}
