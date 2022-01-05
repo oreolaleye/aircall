@@ -3,6 +3,7 @@
   border-radius: 10px;
   width: 100%;
   margin: 10px 0;
+  cursor: pointer;
 }
 .card_inner {
   display: flex;
@@ -38,4 +39,5 @@
   border-radius: 10px;
   color: #ffffff;
   padding: 7px 10px;
+  cursor: pointer;
 }

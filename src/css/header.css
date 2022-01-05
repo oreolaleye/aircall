@@ -21,6 +21,7 @@ header .logo img {
   display: flex;
   justify-content: space-evenly;
   width: 60%;
+  cursor: pointer;
 }
 
 .tabs p {
