@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+## Summary
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The goal of this test is to make you code a small ReactJS app. We have prepared a skeleton app for you, but please change whatever you want (CSS files, HTML structure, JS structure, etc).
 
-## Available Scripts
+The app will have two different components:
 
-In the project directory, you can run:
+- **Activity Feed** - simple list of calls
+- **Activity Detail** - detail of a call
+- **Archive** - the final user should be able to archive (and unarchive) a call. Archived calls will no longer be displayed on the Activity Feed and should have a separate Archived Tab.
 
-### `npm start`
+Show us what you can do in 24 hours. You will be assessed on the following parameters:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Focus on design (Pay attention to the UI/UX and transitions)
+- Best React Practices
+- Code Readability and Maintainability
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Submission
 
-### `npm test`
+After you're done with the assignment, please submit a link to the **GitHub/Bitbucket repository** (make sure it's public) with your code **AND** a deployment link where our recruiters can interact with the live version. You can use freely available tools like **Netlify, Vercel, Heroku, etc** to deploy your React application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Note:** Submissions without a valid repository and deployment link will be removed from any further consideration.
 
-### `npm run build`
+To give you an idea, here's what our app looks like:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![app](https://user-images.githubusercontent.com/630714/29357034-763d7216-8276-11e7-8bcb-e77d9645dfcc.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We're using [yarn](https://yarnpkg.com) here (but you can use npm):
 
-### `npm run eject`
+```
+yarn install
+yarn start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## API documentation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Routes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Here is the API address: https://aircall-job.herokuapp.com.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+As you can see, it's hosted on a free Heroku server, which means that the first time you will fetch the API, it will take few seconds to answer.
 
-## Learn More
+- **GET** - https://aircall-job.herokuapp.com/activities: get calls to display in the Activity Feed
+- **GET** - https://aircall-job.herokuapp.com/activities/:id: retrieve a specific call details
+- **POST** - https://aircall-job.herokuapp.com/activities/:id: update a call. The only field updatable is `is_archived (bool)`. You'll need to send a JSON in the request body:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+{
+  is_archived: true
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **GET** - https://aircall-job.herokuapp.com/reset: Reset all calls to initial state (usefull if you archived all calls).
 
-### Code Splitting
+### Call object
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **id** - unique ID of call
+- **created_at** - creation date
+- **direction** - `inbound` or `outbound` call
+- **from** - caller's number
+- **to** - callee's number
+- **via** - Aircall number used for the call
+- **duration** - duration of a call (in seconds)
+- **is_archived** - call is archived or not
+- **call_type** - can be a `missed`, `answered` or `voicemail` call.
+# aircall
